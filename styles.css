@@ -463,6 +463,180 @@ a:hover {
   color: var(--ink-3);
 }
 
+/* --- Kandidáti: profily -------------------------------------------------- */
+
+.cands {
+  margin-top: clamp(2.25rem, 5vw, 3.25rem);
+  padding-top: clamp(2rem, 4.5vw, 3rem);
+  border-top: 3px solid var(--red);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4.5vw, 3rem);
+}
+
+/* Fotka vlevo, jméno vpravo od ní, text pod tím; na širokém displeji
+   fotka drží celý levý sloupec. */
+.cand {
+  display: grid;
+  grid-template-columns: clamp(7rem, 31vw, 9.5rem) minmax(0, 1fr);
+  grid-template-areas:
+    "photo head"
+    "body  body";
+  gap: 1rem 1.15rem;
+  align-items: start;
+  scroll-margin-top: 5.5rem;
+}
+@media (min-width: 48rem) {
+  .cand {
+    grid-template-columns: clamp(10rem, 19vw, 12.5rem) minmax(0, 1fr);
+    /* Fotka drží oba řádky; přebytek výšky bere spodní řádek, aby se
+       mezera mezi jménem a textem neroztahovala u kratších profilů. */
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "photo head"
+      "photo body";
+    column-gap: clamp(1.5rem, 3.5vw, 2.25rem);
+    row-gap: 0.85rem;
+  }
+}
+.cand + .cand {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(2rem, 4.5vw, 3rem);
+}
+
+.cand__photo {
+  grid-area: photo;
+  position: relative;
+  margin: 0;
+}
+.cand__photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 12%;
+  background: var(--paper-3);
+  box-shadow: 0 0 0 1px var(--line);
+}
+/* Pořadí na kandidátce — kolečko jako číslo 2 na letáku */
+.cand__num {
+  position: absolute;
+  top: -0.6rem;
+  left: -0.6rem;
+  display: grid;
+  place-items: center;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-poster);
+  font-size: var(--step--1);
+  line-height: 1;
+  box-shadow: 0 0 0 3px var(--paper-2);
+}
+
+.cand__head {
+  grid-area: head;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-self: center;
+}
+@media (min-width: 48rem) {
+  .cand__head {
+    align-self: start;
+  }
+}
+.cand__name {
+  font-size: var(--step-1);
+  text-wrap: balance;
+}
+.cand__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+.cand__role {
+  font-weight: 700;
+  color: var(--red);
+}
+.cand__age {
+  color: var(--ink-3);
+}
+
+.cand__body {
+  grid-area: body;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.cand__lead {
+  max-width: var(--measure);
+  color: var(--ink-2);
+}
+
+/* Zbytek profilu se rozbaluje na místě — všechno zůstává na jedné stránce. */
+.cand__more {
+  align-self: flex-start;
+}
+.cand__more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35em 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--blue);
+}
+.cand__more > summary::-webkit-details-marker {
+  display: none;
+}
+.cand__more > summary::after {
+  content: "";
+  width: 0.46em;
+  height: 0.46em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform 0.16s ease;
+}
+.cand__more[open] > summary::after {
+  transform: translateY(0.12em) rotate(-135deg);
+}
+.cand__more > summary:hover {
+  color: var(--blue-dark);
+  text-decoration: underline;
+}
+.cand__more-close,
+.cand__more[open] .cand__more-open {
+  display: none;
+}
+.cand__more[open] .cand__more-close {
+  display: inline;
+}
+.cand__bio {
+  margin-top: 0.55rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--line);
+}
+
+.u-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* --- Program: jedenáct pilířů jako barevné pruhy z letáku ---------------- */
 
 .pillars {
