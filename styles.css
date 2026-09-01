@@ -1,7 +1,7 @@
 /* ==========================================================================
    Sdružení občanů pro Senohraby — sos-senohraby.cz
-   Jedna sada obsahu, tři vizuální varianty. Variantu přepnete atributem
-   data-variant="a" | "b" | "c" na korenovem elementu stranky.
+   Vizuál „Plakát“ — přímé pokračování tištěného letáku:
+   červený pruh, těžké verzálky, program jako barevné pruhy.
    ========================================================================== */
 
 /* --- Tokeny -------------------------------------------------------------- */
@@ -16,12 +16,13 @@
   --blue: #03578e;
   --blue-dark: #023f69;
 
-  /* Neutrály s lehkým modrým nádechem, aby ladily se znakem */
+  /* Neutrály; --paper-2 je novinový papír, leták vyšel jako vklad
+     do obecního zpravodaje */
   --ink: #14181e;
   --ink-2: #4b535d;
   --ink-3: #6f7883;
   --paper: #ffffff;
-  --paper-2: #f2f5f8;
+  --paper-2: #efeee9;
   --paper-3: #e5ebf1;
   --line: #d8dfe7;
 
@@ -40,13 +41,10 @@
 
   --font-body:
     "Source Sans 3", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-  --font-display: var(--font-body);
   --font-poster:
     "Archivo Black", "Source Sans 3", Impact, system-ui, sans-serif;
-  --font-num: var(--font-body);
 
   --measure: 62ch;
-  --radius: 12px;
   --radius-sm: 6px;
 
   --step--1: clamp(0.86rem, 0.83rem + 0.14vw, 0.94rem);
@@ -100,26 +98,24 @@ img {
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-poster);
+  font-weight: 400;
   line-height: 1.12;
+  letter-spacing: -0.015em;
   text-wrap: balance;
   margin: 0;
   color: var(--ink);
 }
 h1 {
   font-size: var(--step-4);
-  font-weight: 800;
-  letter-spacing: -0.022em;
 }
 h2 {
   font-size: var(--step-3);
-  font-weight: 800;
-  letter-spacing: -0.018em;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
 }
 h3 {
   font-size: var(--step-1);
-  font-weight: 700;
-  letter-spacing: -0.01em;
 }
 
 p {
@@ -190,8 +186,7 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
+  background: var(--red);
 }
 .masthead__inner {
   display: flex;
@@ -204,24 +199,28 @@ a:hover {
   align-items: center;
   gap: 0.7rem;
   text-decoration: none;
-  color: inherit;
+  color: #fff;
   margin-inline-end: auto;
 }
 .brand__logo {
   width: 42px;
   flex: none;
+  background: #fff;
+  border-radius: 50%;
+  padding: 3px;
 }
 .brand__name {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: var(--step--1);
   line-height: 1.2;
   letter-spacing: -0.005em;
   max-width: 15ch;
+  color: #fff;
 }
 .brand__name b {
   display: block;
-  color: var(--red);
+  color: #ffd9dd;
   letter-spacing: 0.06em;
 }
 
@@ -229,6 +228,28 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Tlačítka na červeném pruhu — obrácená barevnost */
+.masthead .btn {
+  --btn-bg: #fff;
+  --btn-fg: var(--red);
+  --btn-bd: #fff;
+}
+.masthead .btn:hover {
+  --btn-bg: #ffe4e7;
+  --btn-bd: #ffe4e7;
+  color: var(--red-dark);
+}
+.masthead .btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: #fff;
+  --btn-bd: rgba(255, 255, 255, 0.55);
+}
+.masthead .btn--ghost:hover {
+  --btn-bg: rgba(255, 255, 255, 0.14);
+  --btn-bd: #fff;
+  color: #fff;
 }
 
 @media (max-width: 47.99rem) {
@@ -306,8 +327,10 @@ a:hover {
 /* --- Hero ---------------------------------------------------------------- */
 
 .hero {
-  padding-block: clamp(2.75rem, 6vw, 5rem);
-  background: var(--paper);
+  padding-top: clamp(2.75rem, 6vw, 5rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
+  background: var(--red);
+  color: #fff;
 }
 .hero__grid {
   display: grid;
@@ -326,7 +349,14 @@ a:hover {
   gap: 1.15rem;
 }
 .hero__text h1 {
-  max-width: 14ch;
+  max-width: 12ch;
+  color: #fff;
+}
+.hero .eyebrow {
+  color: #ffc9cf;
+}
+.hero .lead {
+  color: #ffe4e7;
 }
 .hero__mark {
   display: flex;
@@ -336,9 +366,29 @@ a:hover {
 }
 .hero__logo {
   width: min(210px, 42vw);
+  background: #fff;
+  border-radius: 50%;
+  padding: 1.2rem;
 }
-.hero__photo {
-  display: none;
+.hero .btn {
+  --btn-bg: #fff;
+  --btn-fg: var(--red);
+  --btn-bd: #fff;
+}
+.hero .btn:hover {
+  --btn-bg: #ffe4e7;
+  --btn-bd: #ffe4e7;
+  color: var(--red-dark);
+}
+.hero .btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: #fff;
+  --btn-bd: rgba(255, 255, 255, 0.6);
+}
+.hero .btn--ghost:hover {
+  --btn-bg: rgba(255, 255, 255, 0.15);
+  --btn-bd: #fff;
+  color: #fff;
 }
 
 .ballot {
@@ -353,12 +403,12 @@ a:hover {
   place-items: center;
   width: 3.6em;
   height: 3.6em;
-  font-family: var(--font-num);
+  font-family: var(--font-poster);
   font-size: clamp(1.6rem, 3.4vw, 2.2rem);
-  font-weight: 900;
+  font-weight: 400;
   line-height: 1;
-  color: #fff;
-  background: var(--red);
+  color: var(--red);
+  background: #fff;
   border-radius: 50%;
 }
 .ballot__label {
@@ -366,7 +416,7 @@ a:hover {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: #ffc9cf;
   max-width: 9ch;
   line-height: 1.25;
 }
@@ -375,7 +425,6 @@ a:hover {
 
 .section {
   padding-block: clamp(2.75rem, 6vw, 4.75rem);
-  border-top: 1px solid var(--line);
 }
 .section--tint {
   background: var(--paper-2);
@@ -407,45 +456,41 @@ a:hover {
 }
 .team__figure img {
   width: 100%;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
+  box-shadow: 0 0 0 1px var(--line);
 }
 .team__figure figcaption {
   font-size: var(--step--1);
   color: var(--ink-3);
 }
 
-/* --- Program: jedenáct pilířů -------------------------------------------- */
+/* --- Program: jedenáct pilířů jako barevné pruhy z letáku ---------------- */
 
 .pillars {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
 }
 .pillars li {
   --c: var(--ink);
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.55em 1.1em 0.55em 0.85em;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: var(--step-0);
-  letter-spacing: 0.005em;
-  color: var(--ink);
-}
-.pillars li::before {
-  content: "";
-  flex: none;
-  width: 0.72em;
-  height: 0.72em;
-  border-radius: 50%;
+  padding: 0.45em 1.1em;
   background: var(--c);
+  color: #fff;
+  font-family: var(--font-poster);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 2.4vw, 1.35rem);
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  text-align: center;
+}
+/* Na žluté a oranžové by bílý text v tisku držel obtah, na displeji ne — píšeme tmavě. */
+.pillars li.is-light {
+  color: var(--ink);
 }
 
 /* --- Poznámka „připravujeme“ --------------------------------------------- */
@@ -460,7 +505,6 @@ a:hover {
   background: var(--paper);
   border: 1px solid var(--line);
   border-left: 4px solid var(--red);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   color: var(--ink-2);
   font-size: var(--step--1);
   max-width: 68ch;
@@ -500,9 +544,9 @@ a:hover {
   padding: 1rem;
 }
 .meet__day {
-  font-family: var(--font-num);
+  font-family: var(--font-poster);
   font-size: clamp(2.6rem, 7vw, 3.6rem);
-  font-weight: 900;
+  font-weight: 400;
   line-height: 0.95;
 }
 .meet__month {
@@ -564,7 +608,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--step-2);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -614,300 +658,4 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-}
-
-/* ==========================================================================
-   VARIANTA A — „Čistá“
-   Bílý papír, klidná typografie, červená jen jako akcent.
-   ========================================================================== */
-
-[data-variant="a"] .section--tint {
-  background: var(--paper-2);
-}
-[data-variant="a"] .hero {
-  border-bottom: 1px solid var(--line);
-}
-[data-variant="a"] .hero__mark {
-  border-left: 1px solid var(--line);
-  padding-left: clamp(1rem, 3vw, 2.25rem);
-}
-@media (max-width: 61.99rem) {
-  [data-variant="a"] .hero__mark {
-    border-left: 0;
-    padding-left: 0;
-    justify-content: flex-start;
-  }
-}
-
-/* ==========================================================================
-   VARIANTA B — „Plakát“
-   Přímé pokračování tištěného letáku: červený pruh, těžké verzálky,
-   program jako barevné pruhy.
-   ========================================================================== */
-
-[data-variant="b"] {
-  /* novinový papír — leták vyšel jako vklad do obecního zpravodaje */
-  --paper-2: #efeee9;
-  --font-num: var(--font-poster);
-}
-[data-variant="b"] h1,
-[data-variant="b"] h2,
-[data-variant="b"] h3 {
-  font-family: var(--font-poster);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-}
-[data-variant="b"] h2 {
-  text-transform: uppercase;
-  letter-spacing: -0.005em;
-}
-[data-variant="b"] .ballot__num,
-[data-variant="b"] .meet__day {
-  font-weight: 400;
-}
-
-[data-variant="b"] .masthead {
-  background: var(--red);
-  border-bottom: 0;
-}
-[data-variant="b"] .brand {
-  color: #fff;
-}
-[data-variant="b"] .brand__name {
-  color: #fff;
-}
-[data-variant="b"] .brand__name b {
-  color: #ffd9dd;
-}
-[data-variant="b"] .brand__logo {
-  background: #fff;
-  border-radius: 50%;
-  padding: 3px;
-}
-[data-variant="b"] .masthead .btn {
-  --btn-bg: #fff;
-  --btn-fg: var(--red);
-  --btn-bd: #fff;
-}
-[data-variant="b"] .masthead .btn:hover {
-  --btn-bg: #ffe4e7;
-  --btn-bd: #ffe4e7;
-  color: var(--red-dark);
-}
-[data-variant="b"] .masthead .btn--ghost {
-  --btn-bg: transparent;
-  --btn-fg: #fff;
-  --btn-bd: rgba(255, 255, 255, 0.55);
-}
-[data-variant="b"] .masthead .btn--ghost:hover {
-  --btn-bg: rgba(255, 255, 255, 0.14);
-  --btn-bd: #fff;
-  color: #fff;
-}
-
-[data-variant="b"] .hero {
-  background: var(--red);
-  color: #fff;
-  padding-bottom: clamp(3.5rem, 8vw, 6rem);
-}
-[data-variant="b"] .hero h1 {
-  color: #fff;
-  max-width: 12ch;
-}
-[data-variant="b"] .hero .eyebrow {
-  color: #ffc9cf;
-}
-[data-variant="b"] .hero .lead {
-  color: #ffe4e7;
-}
-[data-variant="b"] .hero__logo {
-  background: #fff;
-  border-radius: 50%;
-  padding: 1.2rem;
-}
-[data-variant="b"] .ballot__num {
-  background: #fff;
-  color: var(--red);
-}
-[data-variant="b"] .ballot__label {
-  color: #ffc9cf;
-}
-[data-variant="b"] .hero .btn {
-  --btn-bg: #fff;
-  --btn-fg: var(--red);
-  --btn-bd: #fff;
-}
-[data-variant="b"] .hero .btn:hover {
-  --btn-bg: #ffe4e7;
-  --btn-bd: #ffe4e7;
-  color: var(--red-dark);
-}
-[data-variant="b"] .hero .btn--ghost {
-  --btn-bg: transparent;
-  --btn-fg: #fff;
-  --btn-bd: rgba(255, 255, 255, 0.6);
-}
-[data-variant="b"] .hero .btn--ghost:hover {
-  --btn-bg: rgba(255, 255, 255, 0.15);
-  --btn-bd: #fff;
-  color: #fff;
-}
-
-[data-variant="b"] .section {
-  border-top: 0;
-}
-[data-variant="b"] .team__figure img {
-  border-radius: 0;
-  border: 0;
-  box-shadow: 0 0 0 1px var(--line);
-}
-[data-variant="b"] .note {
-  border-radius: 0;
-}
-
-/* Program jako barevné pruhy z letáku */
-[data-variant="b"] .pillars {
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-}
-[data-variant="b"] .pillars li {
-  background: var(--c);
-  border: 0;
-  border-radius: 0;
-  color: #fff;
-  font-family: var(--font-poster);
-  font-weight: 400;
-  font-size: clamp(0.95rem, 2.4vw, 1.35rem);
-  text-transform: uppercase;
-  letter-spacing: 0.005em;
-  padding: 0.45em 1.1em;
-  text-align: center;
-}
-[data-variant="b"] .pillars li::before {
-  display: none;
-}
-/* Na žluté a oranžové by bílý text v tisku drží obtah, na displeji ne — píšeme tmavě. */
-[data-variant="b"] .pillars li.is-light {
-  color: var(--ink);
-}
-
-[data-variant="b"] .meet__stamp {
-  border-radius: 50%;
-}
-[data-variant="b"] .mailto {
-  text-transform: none;
-}
-
-/* ==========================================================================
-   VARIANTA C — „Fotografická“
-   Vede fotografie, klidná zeleno-šedá plocha, patkový nadpisový řez.
-   ========================================================================== */
-
-[data-variant="c"] {
-  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --paper-2: #edf1ec;
-  --paper-3: #e1e8df;
-  --line: #d3dcd2;
-  --ink: #17201a;
-  --ink-2: #4b564e;
-  --ink-3: #6d7970;
-}
-[data-variant="c"] h1,
-[data-variant="c"] h2 {
-  font-weight: 700;
-  letter-spacing: -0.012em;
-}
-[data-variant="c"] h3 {
-  font-weight: 600;
-}
-
-[data-variant="c"] .hero {
-  position: relative;
-  padding-block: clamp(4rem, 11vw, 8.5rem);
-  background: #1c2620;
-  overflow: hidden;
-}
-[data-variant="c"] .hero__photo {
-  display: block;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 18%;
-}
-[data-variant="c"] .hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(23, 32, 26, 0.76);
-}
-@media (min-width: 62rem) {
-  [data-variant="c"] .hero::after {
-    background: linear-gradient(
-      100deg,
-      rgba(23, 32, 26, 0.93) 0%,
-      rgba(23, 32, 26, 0.78) 46%,
-      rgba(23, 32, 26, 0.34) 100%
-    );
-  }
-}
-[data-variant="c"] .hero__grid {
-  position: relative;
-  z-index: 1;
-}
-[data-variant="c"] .hero h1 {
-  color: #fff;
-  max-width: 13ch;
-}
-[data-variant="c"] .hero .eyebrow {
-  color: #c6d6c8;
-}
-[data-variant="c"] .hero .lead {
-  color: #e4ebe3;
-}
-[data-variant="c"] .hero__logo {
-  background: rgba(255, 255, 255, 0.94);
-  border-radius: 50%;
-  padding: 1.1rem;
-  width: min(180px, 38vw);
-}
-[data-variant="c"] .hero__mark {
-  justify-content: flex-start;
-}
-[data-variant="c"] .ballot__label {
-  color: #c6d6c8;
-}
-[data-variant="c"] .hero .btn--ghost {
-  --btn-fg: #fff;
-  --btn-bd: rgba(255, 255, 255, 0.6);
-}
-[data-variant="c"] .hero .btn--ghost:hover {
-  --btn-bg: rgba(255, 255, 255, 0.16);
-  --btn-bd: #fff;
-  color: #fff;
-}
-
-/* fotografie už je v hlavičce, v sekci kandidátů ji neopakujeme */
-[data-variant="c"] .team {
-  grid-template-columns: minmax(0, 1fr);
-}
-[data-variant="c"] .team__figure {
-  display: none;
-}
-
-[data-variant="c"] .section {
-  border-top: 1px solid var(--line);
-}
-[data-variant="c"] .pillars li {
-  border-radius: var(--radius-sm);
-  background: var(--paper);
-  border-left: 4px solid var(--c);
-}
-[data-variant="c"] .pillars li::before {
-  display: none;
-}
-[data-variant="c"] .footer {
-  background: #1c2620;
 }
