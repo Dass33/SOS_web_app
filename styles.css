@@ -833,3 +833,9 @@ a:hover {
   align-items: center;
   gap: 0.85rem;
 }
+
+/* --------- */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
