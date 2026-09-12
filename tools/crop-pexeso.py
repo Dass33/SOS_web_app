@@ -17,7 +17,7 @@ import os
 import sys
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     sys.exit("Chybí Pillow. Nainstalujte ho:  pip install pillow")
 
@@ -27,7 +27,7 @@ MOTIFS = [
     ("Hlaska_IMG_20220804_074346.jpg", "hlaska-1", 0.5),
     ("Hlaska_IMG_20220804_074400.jpg", "hlaska-2", 0.5),
     ("Kaple_DSC02315.JPG", "kaple", 0.5),
-    ("OU_IMG_20220805_072214.jpg", "obecni-urad", 0.5),
+    ("OU_IMG_20220805_072214.jpg", "obecni-urad", 0.28),
     ("Plovarna_IMG_20220804_075303.jpg", "plovarna", 0.5),
     ("Poddubi_20240622_095722.JPG", "poddubi-1", 0.5),
     ("Poddubi_20240622_095729.JPG", "poddubi-2", 0.5),
@@ -83,7 +83,9 @@ def main():
             continue
 
         with Image.open(path) as image:
-            image = image.convert("RGB")
+            # fotky z mobilu nesou otočení jen v EXIF — bez tohohle by
+            # část karet ležela na boku nebo vzhůru nohama
+            image = ImageOps.exif_transpose(image).convert("RGB")
             image = square(image, focus)
             image = image.resize((args.size, args.size), Image.LANCZOS)
             out = os.path.join(OUT_DIR, slug + ".webp")
