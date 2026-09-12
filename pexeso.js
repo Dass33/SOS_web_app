@@ -10,9 +10,8 @@
 
   /* Šestnáct motivů — z každého je jedna dvojice, dohromady 32 karet.
      Popisek (alt) čte hlasová čtečka.
-     Pozn.: Hláska a Poddubí jsou dvě různé fotky téhož místa; „Tuscany
-     Superb“ a šestnáctý motiv jsou odhad z názvu souboru — až je uvidíte,
-     popisky prosím upřesněte. Soubory vyrábí tools/crop-pexeso.py. */
+     Pozn.: Hláska a Poddubí jsou dvě různé fotky téhož místa.
+     Soubory vyrábí tools/crop-pexeso.py. */
   var MOTIFS = [
     { src: "assets/pexeso/hlaska-1.webp", alt: "Hláska" },
     { src: "assets/pexeso/hlaska-2.webp", alt: "Hláska z druhé strany" },
@@ -29,7 +28,7 @@
     { src: "assets/pexeso/borovice.webp", alt: "Borovice" },
     { src: "assets/pexeso/houba.webp", alt: "Houba" },
     { src: "assets/pexeso/tuscany-superb.webp", alt: "Růže Tuscany Superb" },
-    { src: "assets/pexeso/motiv-16.webp", alt: "Senohrabský motiv" },
+    { src: "assets/pexeso/jezek.webp", alt: "Ježek v šiškách" },
   ];
 
   /* Náhradní barvy políček — jedenáct pilířů programu z letáku.

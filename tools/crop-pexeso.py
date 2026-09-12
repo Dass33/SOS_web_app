@@ -39,7 +39,7 @@ MOTIFS = [
     ("Borovice_DSC_0048.JPG", "borovice", 0.5),
     ("Houba_20251020_160901.JPG", "houba", 0.5),
     ("Tuscany Superb_3.jpg", "tuscany-superb", 0.5),
-    ("IMG_0942.jpg", "motiv-16", 0.5),
+    ("IMG_0942.jpg", "jezek", 0.5),
 ]
 
 OUT_DIR = os.path.join("assets", "pexeso")
