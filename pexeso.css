@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Senohrabské pexeso — styly jen pro stránku pexeso.html
+   Navazuje na tokeny a komponenty ze styles.css (barvy, písma, tlačítka).
+   ========================================================================== */
+
+/* --- Hlavička stránky ---------------------------------------------------- */
+
+.hero--slim {
+  padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+.hero__slim {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.hero__slim h1 {
+  color: #fff;
+  font-size: var(--step-3);
+}
+.hero__slim .lead {
+  max-width: 46ch;
+}
+
+/* --- Ovládání hry -------------------------------------------------------- */
+
+.section--game {
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.game__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-block: 0.85rem;
+  border-top: 3px solid var(--red);
+  border-bottom: 1px solid var(--line);
+}
+
+/* --- Ukazatele ----------------------------------------------------------- */
+
+.game__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.25rem;
+  margin: 0;
+}
+.game__stats > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.game__stats dt {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.game__stats dd {
+  margin: 0;
+  font-family: var(--font-poster);
+  font-size: var(--step-1);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.game__best dd {
+  color: var(--red);
+}
+
+.game__status {
+  color: var(--ink-2);
+  min-height: 1.6em;
+}
+
+/* --- Deska --------------------------------------------------------------- */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.4rem, 1.5vw, 0.8rem);
+  width: min(100%, 52rem);
+  margin-inline: auto;
+}
+@media (min-width: 44rem) {
+  .board {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+/* --- Karta --------------------------------------------------------------- */
+
+.card {
+  position: relative;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: none;
+  perspective: 900px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.card:disabled {
+  cursor: default;
+}
+.card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.38s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.card.is-up .card__inner,
+.card.is-matched .card__inner {
+  transform: rotateY(180deg);
+}
+.card__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Rub — červená karta se znakem sdružení */
+.card__cover {
+  background: var(--red);
+  border: 3px solid var(--red);
+  box-shadow: inset 0 0 0 2px var(--red-dark);
+}
+.card__cover img {
+  width: 62%;
+  height: auto;
+  background: #fff;
+  border-radius: 50%;
+  padding: 4%;
+  pointer-events: none;
+}
+.card:hover:not(:disabled) .card__cover {
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+}
+
+/* Líc — fotka. Než se načte (nebo než ji doplníme), drží místo barevné
+   políčko s číslem, takže hra funguje i bez obrázků. */
+.card__photo {
+  transform: rotateY(180deg);
+  background: var(--c, var(--paper-2));
+  box-shadow: 0 0 0 1px var(--line);
+}
+.card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card__num {
+  font-family: var(--font-poster);
+  font-size: clamp(1.1rem, 4.5vw, 2.1rem);
+  line-height: 1;
+  color: #fff;
+}
+.card__photo.is-light .card__num {
+  color: var(--ink);
+}
+
+.card.is-matched {
+  opacity: 0.8;
+}
+.card.is-matched .card__photo {
+  box-shadow: 0 0 0 3px var(--red);
+}
+.card.is-wrong .card__photo {
+  box-shadow: 0 0 0 3px var(--blue);
+}
+.card.is-wrong {
+  animation: card-shake 0.32s ease;
+}
+@keyframes card-shake {
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* --- Výhra --------------------------------------------------------------- */
+
+.game__win[hidden] {
+  display: none;
+}
+.game__win {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1.25rem 1.35rem;
+  background: var(--paper-2);
+  border-left: 4px solid var(--red);
+}
+.game__win-title {
+  font-family: var(--font-poster);
+  font-size: var(--step-2);
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--red);
+}
+.game__win-text {
+  color: var(--ink-2);
+  max-width: var(--measure);
+}
+.game__win .btn {
+  margin-top: 0.35rem;
+}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Senohrabské pexeso — Sdružení občanů pro Senohraby</title>
+    <meta
+      name="description"
+      content="Pexeso ze Senohrab. Otočte dvě stejné karty a najděte všechny dvojice. Hra Sdružení občanů pro Senohraby."
+    />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#cc071d" />
+    <link rel="canonical" href="https://sos-senohraby.cz/pexeso.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="Sdružení občanů pro Senohraby" />
+    <meta property="og:title" content="Senohrabské pexeso" />
+    <meta
+      property="og:description"
+      content="Otočte dvě stejné karty a najděte všechny dvojice. Hra Sdružení občanů pro Senohraby."
+    />
+    <meta property="og:url" content="https://sos-senohraby.cz/pexeso.html" />
+    <meta
+      property="og:image"
+      content="https://sos-senohraby.cz/assets/img/tym.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/img/favicon.png" />
+
+    <link
+      rel="preload"
+      href="assets/fonts/source-sans-3-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/source-sans-3-latin-ext.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pexeso.css" />
+  </head>
+  <body>
+    <a class="skip" href="#obsah">Přejít ke hře</a>
+
+    <header class="masthead">
+      <div class="wrap masthead__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__logo" src="assets/img/znak-sos.png" alt="" />
+          <span class="brand__name">
+            <b>S. O. S.</b>Sdružení občanů pro Senohraby
+          </span>
+        </a>
+        <nav class="masthead__nav" aria-label="Hlavní">
+          <a class="btn btn--sm btn--ghost" href="index.html">Zpět na web</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="obsah">
+      <section class="hero hero--slim">
+        <div class="wrap hero__slim">
+          <p class="eyebrow">Pro zábavu</p>
+          <h1>Senohrabské pexeso</h1>
+          <p class="lead">Šestnáct míst, která tu máme rádi.</p>
+        </div>
+      </section>
+
+      <section class="section section--game" aria-labelledby="hra-nadpis">
+        <div class="wrap">
+          <h2 id="hra-nadpis" class="u-hidden">Hra</h2>
+
+          <div class="game" id="hra">
+            <div class="game__bar">
+              <dl class="game__stats">
+                <div>
+                  <dt>Tahy</dt>
+                  <dd id="hra-tahy">0</dd>
+                </div>
+                <div>
+                  <dt>Čas</dt>
+                  <dd id="hra-cas">0:00</dd>
+                </div>
+                <div class="game__best">
+                  <dt>Nejlepší</dt>
+                  <dd id="hra-rekord">—</dd>
+                </div>
+              </dl>
+              <button class="btn btn--sm" type="button" id="hra-nova">
+                Nová hra
+              </button>
+            </div>
+
+            <p
+              class="game__status"
+              id="hra-stav"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+            <div class="board" id="hra-deska"></div>
+
+            <div class="game__win" id="hra-vyhra" hidden>
+              <p class="game__win-title">Hotovo!</p>
+              <p class="game__win-text" id="hra-vyhra-text"></p>
+              <button class="btn" type="button" id="hra-znovu">
+                Hrát znovu
+              </button>
+            </div>
+          </div>
+
+          <noscript>
+            <p class="note">
+              <span class="note__tag">Pozor</span>
+              Pexeso potřebuje zapnutý JavaScript.
+            </p>
+          </noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <span class="footer__left">
+          <img class="footer__mark" src="assets/img/znak-sos.png" alt="" />
+          <span>Sdružení občanů pro Senohraby &middot; číslo 2</span>
+        </span>
+        <div class="flex-col">
+          <a href="index.html">Hlavní stránka</a>
+          <a href="mailto:info@sos-senohraby.cz">info@sos-senohraby.cz</a>
+          <a href="https://www.facebook.com/sos.senohraby.cz/about/"
+            >Facebook</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="pexeso.js"></script>
+  </body>
+</html>
