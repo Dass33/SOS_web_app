@@ -9,26 +9,24 @@
   "use strict";
 
   /* Šestnáct motivů — z každého je jedna dvojice, dohromady 32 karet.
-     Popisek (alt) čte hlasová čtečka.
-     Pozn.: Hláska a Poddubí jsou dvě různé fotky téhož místa.
-     Soubory vyrábí tools/crop-pexeso.py. */
+     Popisek (alt) čte hlasová čtečka. Soubory vyrábí tools/crop-pexeso.py. */
   var MOTIFS = [
-    { src: "assets/pexeso/hlaska-1.webp", alt: "Hláska" },
-    { src: "assets/pexeso/hlaska-2.webp", alt: "Hláska z druhé strany" },
+    { src: "assets/pexeso/hlaska-1.webp", alt: "Schody k Hlásce" },
+    { src: "assets/pexeso/hlaska-2.webp", alt: "Vyhlídka Hláska" },
     { src: "assets/pexeso/kaple.webp", alt: "Kaple svatého Vojtěcha" },
     { src: "assets/pexeso/obecni-urad.webp", alt: "Obecní úřad" },
-    { src: "assets/pexeso/plovarna.webp", alt: "Plovárna" },
-    { src: "assets/pexeso/poddubi-1.webp", alt: "Poddubí" },
-    { src: "assets/pexeso/poddubi-2.webp", alt: "Poddubí z druhé strany" },
-    { src: "assets/pexeso/rybarska-chata.webp", alt: "Rybářská chata" },
-    { src: "assets/pexeso/u-altanu.webp", alt: "U Altánu" },
-    { src: "assets/pexeso/chaty-za-trati.webp", alt: "Chaty za tratí" },
-    { src: "assets/pexeso/k-nadrazi.webp", alt: "Ulice K nádraží" },
-    { src: "assets/pexeso/hlavni.webp", alt: "Hlavní ulice" },
-    { src: "assets/pexeso/borovice.webp", alt: "Borovice" },
-    { src: "assets/pexeso/houba.webp", alt: "Houba" },
+    { src: "assets/pexeso/plovarna.webp", alt: "Kabinky na plovárně" },
+    { src: "assets/pexeso/poddubi-1.webp", alt: "Chata v Poddubí" },
+    { src: "assets/pexeso/poddubi-2.webp", alt: "Les v Poddubí" },
+    { src: "assets/pexeso/rybarska-chata.webp", alt: "Rybářská chata u vody" },
+    { src: "assets/pexeso/u-altanu.webp", alt: "Jinovatka U Altánu" },
+    { src: "assets/pexeso/chaty-za-trati.webp", alt: "Chata za tratí" },
+    { src: "assets/pexeso/k-nadrazi.webp", alt: "Zasněžená cesta k nádraží" },
+    { src: "assets/pexeso/hlavni.webp", alt: "Zasněžená Hlavní ulice" },
+    { src: "assets/pexeso/borovice.webp", alt: "Borovice v jinovatce" },
+    { src: "assets/pexeso/houba.webp", alt: "Muchomůrka červená" },
     { src: "assets/pexeso/tuscany-superb.webp", alt: "Růže Tuscany Superb" },
-    { src: "assets/pexeso/jezek.webp", alt: "Ježek v šiškách" },
+    { src: "assets/pexeso/jezek.webp", alt: "Ježek mezi šiškami" }
   ];
 
   /* Náhradní barvy políček — jedenáct pilířů programu z letáku.
