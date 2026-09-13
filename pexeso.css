@@ -135,18 +135,19 @@
   -webkit-backface-visibility: hidden;
 }
 
-/* Rub — červená karta se znakem sdružení */
+/* Rub — červená karta s celým logem sdružení. Bílá podložka je hranatá:
+   kruh by uřízl nápis S. O. S., který k logu patří. */
 .card__cover {
   background: var(--red);
   border: 3px solid var(--red);
   box-shadow: inset 0 0 0 2px var(--red-dark);
 }
 .card__cover img {
-  width: 62%;
+  width: 80%;
   height: auto;
   background: #fff;
-  border-radius: 50%;
-  padding: 4%;
+  border-radius: var(--radius-sm);
+  padding: 5% 5% 2%;
   pointer-events: none;
 }
 .card:hover:not(:disabled) .card__cover {

@@ -265,9 +265,11 @@ a:hover {
   }
   .masthead__nav {
     width: 100%;
+    flex-wrap: wrap;
   }
   .masthead__nav .btn {
-    flex: 1 1 0;
+    flex: 1 1 auto;
+    padding-inline: 0.8em;
   }
 }
 
@@ -425,6 +427,15 @@ a:hover {
 
 .section {
   padding-block: clamp(2.75rem, 6vw, 4.75rem);
+}
+/* Odkazy z lišty míří na sekce; lepkavá hlavička jim nesmí ukrojit nadpis. */
+.section[id] {
+  scroll-margin-top: 4.5rem;
+}
+@media (max-width: 47.99rem) {
+  .section[id] {
+    scroll-margin-top: 0;
+  }
 }
 .section--tint {
   background: var(--paper-2);
@@ -639,13 +650,16 @@ a:hover {
 
 /* --- Program: jedenáct pilířů jako barevné pruhy z letáku ---------------- */
 
+/* Pilíře skládáme vedle sebe a lámeme do řádků — sloupec pod sebou zabral
+   celou obrazovku a leták s vlastním programem pod ním nebyl vidět. */
 .pillars {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   gap: 0.4rem;
 }
 .pillars li {
@@ -657,7 +671,7 @@ a:hover {
   color: #fff;
   font-family: var(--font-poster);
   font-weight: 400;
-  font-size: clamp(0.95rem, 2.4vw, 1.35rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.15rem);
   text-transform: uppercase;
   letter-spacing: 0.005em;
   text-align: center;
@@ -931,10 +945,10 @@ a:hover {
   transform: rotate(6deg);
 }
 .play__card img {
-  width: 62%;
+  width: 78%;
   background: #fff;
-  border-radius: 50%;
-  padding: 4%;
+  border-radius: var(--radius-sm);
+  padding: 5% 5% 2%;
 }
 .play__body {
   display: flex;
@@ -945,4 +959,9 @@ a:hover {
 .play__body p {
   max-width: var(--measure);
   color: var(--ink-2);
+}
+.play__more {
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--ink-3);
+  font-size: var(--step--1);
 }
