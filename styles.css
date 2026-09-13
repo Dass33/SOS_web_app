@@ -202,12 +202,14 @@ a:hover {
   color: #fff;
   margin-inline-end: auto;
 }
+/* Celé logo včetně nápisu S. O. S. — na hranaté bílé podložce, v kolečku
+   by se nápis uřízl. */
 .brand__logo {
-  width: 42px;
+  width: 54px;
   flex: none;
   background: #fff;
-  border-radius: 50%;
-  padding: 3px;
+  border-radius: var(--radius-sm);
+  padding: 4px 4px 2px;
 }
 .brand__name {
   font-family: var(--font-body);
@@ -839,8 +841,11 @@ a:hover {
   justify-content: space-between;
 }
 .footer__mark {
-  width: 34px;
+  width: 46px;
   flex: none;
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 4px 4px 2px;
 }
 .footer__left {
   display: flex;
