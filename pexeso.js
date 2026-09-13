@@ -137,7 +137,7 @@
     var cover = document.createElement("span");
     cover.className = "card__face card__cover";
     var mark = document.createElement("img");
-    mark.src = "assets/img/znak-sos.png";
+    mark.src = "assets/img/logo-sos.png";
     mark.alt = "";
     cover.appendChild(mark);
 
