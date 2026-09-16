@@ -12,12 +12,12 @@
      Popisek (alt) čte hlasová čtečka. Soubory vyrábí tools/crop-pexeso.py. */
   var MOTIFS = [
     { src: "assets/pexeso/hlaska-1.webp", alt: "Schody k Hlásce" },
-    { src: "assets/pexeso/hlaska-2.webp", alt: "Vyhlídka Hláska" },
+    { src: "assets/pexeso/depo33-pred.webp", alt: "Budova depo33 před rekonstrukcí" },
     { src: "assets/pexeso/kaple.webp", alt: "Kaple svatého Vojtěcha" },
     { src: "assets/pexeso/obecni-urad.webp", alt: "Obecní úřad" },
     { src: "assets/pexeso/plovarna.webp", alt: "Kabinky na plovárně" },
     { src: "assets/pexeso/poddubi-1.webp", alt: "Chata v Poddubí" },
-    { src: "assets/pexeso/poddubi-2.webp", alt: "Les v Poddubí" },
+    { src: "assets/pexeso/depo33-po.webp", alt: "Budova depo33 po rekonstrukci" },
     { src: "assets/pexeso/rybarska-chata.webp", alt: "Rybářská chata u vody" },
     { src: "assets/pexeso/u-altanu.webp", alt: "Jinovatka U Altánu" },
     { src: "assets/pexeso/chaty-za-trati.webp", alt: "Chata za tratí" },
